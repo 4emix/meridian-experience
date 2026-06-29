@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: #f5f2ea;
+  --graphite: #ffffff;
+  --blueprint: #ff5d2e;
+  --glow: #ff5d2e;
+  --amber: #0bb39b;
+  --mist: #23262b;
+  --fog: #6e747c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--ink);
+  color: var(--mist);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+::selection {
+  background: var(--glow);
+  color: #fff;
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+}
+
+/* Display serif via Google Fonts import for an architectural editorial feel */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap");
+
+.font-display {
+  font-family: "Fraunces", serif;
+}
+.font-real {
+  font-family: "Syne", "Space Grotesk", sans-serif;
+}
+.font-sans {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+}
+.font-mono {
+  font-family: "JetBrains Mono", monospace;
+}
+
+body {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+}
+
+/* Blueprint grid background utility */
+.bp-grid {
+  background-image: linear-gradient(rgba(255, 93, 46, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 93, 46, 0.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.bp-grid-fine {
+  background-image: linear-gradient(rgba(255, 93, 46, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 93, 46, 0.06) 1px, transparent 1px);
+  background-size: 8px 8px;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
